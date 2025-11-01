@@ -1,0 +1,19 @@
+<div class="app-container">
+  <header class="app-header">
+    <div class="header-content">
+      <div class="header-titles">
+        <h1>🕒 {{ title }}</h1>
+        <h2 class="subtitle">{{ subtitle }}</h2>
+      </div>
+      
+      <div *ngIf="currentUser" class="user-info">
+        <span class="welcome">Bienvenido, {{ currentUser.username }}</span>
+        <button (click)="onLogout()" class="logout-btn">Cerrar Sesión</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <router-outlet></router-outlet>
+  </main>
+</div>
