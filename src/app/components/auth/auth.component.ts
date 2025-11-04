@@ -79,7 +79,6 @@ export class AuthComponent {
           success = this.authService.register({
             username,
             password,
-            email: '' // email vacío al eliminarlo
           } as any);
 
           if (!success) {

@@ -1,0 +1,46 @@
+<div class="time-visualizer-container">
+  <div class="controls-panel">
+    <div class="control-group">
+      <label for="visualizer-select">Visualizador:</label>
+      <select 
+        id="visualizer-select" 
+        [(ngModel)]="selectedVisualizer"
+        class="custom-select">
+        <option *ngFor="let viz of visualizers" [value]="viz.value">
+          {{ viz.label }}
+        </option>
+      </select>
+      <div class="visualizer-description">
+        {{ getVisualizerDescription(selectedVisualizer) }}
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label for="time-slider">Ajuste de Tiempo: {{ timeOffset }} segundos</label>
+      <input 
+        type="range" 
+        id="time-slider" 
+        min="-7200" 
+        max="7200" 
+        [(ngModel)]="timeOffset"
+        (input)="onTimeOffsetChange($event)"
+        class="time-slider">
+      <div class="slider-labels">
+        <span>-2h</span>
+        <span>0</span>
+        <span>+2h</span>
+      </div>
+    </div>
+
+    <div class="current-time-display">
+      <div class="time-label">Hora Actual</div>
+      <div class="time-value">{{ getFormattedTime() }}</div>
+    </div>
+  </div>
+
+  <div class="visualizer-area">
+    <!-- Renderizar el componente dinámicamente -->
+    <ng-container [ngSwitch]="selectedVisualizer">
+    </ng-container>
+  </div>
+</div>
