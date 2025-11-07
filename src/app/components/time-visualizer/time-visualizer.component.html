@@ -41,6 +41,9 @@
   <div class="visualizer-area">
     <!-- Renderizar el componente dinámicamente -->
     <ng-container [ngSwitch]="selectedVisualizer">
+      <app-analog-clock 
+        *ngSwitchCase="'analog'">
+      </app-analog-clock>
     </ng-container>
   </div>
 </div>

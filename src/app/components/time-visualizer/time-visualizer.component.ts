@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { TimeService, TimeState } from '../../services/time.service';
 
 // Importar componentes de visualizadores
+import { AnalogClockComponent } from '../clocks/analog-clock/analog-clock.component';
 
 interface Visualizer {
   value: string;
@@ -17,8 +18,9 @@ interface Visualizer {
   selector: 'app-time-visualizer',
   standalone: true,
   imports: [
-    CommonModule, 
+    CommonModule,
     FormsModule,
+    AnalogClockComponent,
   ],
   templateUrl: './time-visualizer.component.html',
   styleUrls: ['./time-visualizer.component.css']
@@ -30,6 +32,12 @@ export class TimeVisualizerComponent implements OnInit, OnDestroy {
   private timeSubscription: Subscription | undefined;
 
   visualizers: Visualizer[] = [
+    {
+    value: 'analog',
+    label: 'Reloj Analógico',
+    description: 'Un reloj analógico clásico con manecillas que se actualizan cada segundo.',
+    component: AnalogClockComponent
+    }
   ];
 
   constructor(private timeService: TimeService) {
