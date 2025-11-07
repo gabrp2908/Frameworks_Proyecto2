@@ -7,6 +7,7 @@ import { TimeService, TimeState } from '../../services/time.service';
 // Importar componentes de visualizadores
 import { AnalogClockComponent } from '../clocks/analog-clock/analog-clock.component';
 import { BinaryClockComponent } from '../clocks/binary-clock/binary-clock.component';
+import { BarsClockComponent } from '../clocks/bars-clock/bars-clock.component';
 
 
 interface Visualizer {
@@ -24,6 +25,7 @@ interface Visualizer {
     FormsModule,
     AnalogClockComponent,
     BinaryClockComponent,
+    BarsClockComponent,
   ],
   templateUrl: './time-visualizer.component.html',
   styleUrls: ['./time-visualizer.component.css']
@@ -46,6 +48,12 @@ export class TimeVisualizerComponent implements OnInit, OnDestroy {
       label: 'Reloj Binario', 
       description: 'Tiempo representado en código binario',
       component: BinaryClockComponent
+    },
+    { 
+      value: 'bars', 
+      label: 'Reloj de Barras', 
+      description: 'Barras que crecen con cada unidad de tiempo',
+      component: BarsClockComponent
     }
   ];
 

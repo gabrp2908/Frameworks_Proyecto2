@@ -49,6 +49,12 @@
         *ngSwitchCase="'binary'"
         [currentTime]="currentTime">
       </app-binary-clock>
+
+      <app-bars-clock 
+        *ngSwitchCase="'bars'"
+        [currentTime]="currentTime">
+      </app-bars-clock>
+      
       
     </ng-container>
   </div>

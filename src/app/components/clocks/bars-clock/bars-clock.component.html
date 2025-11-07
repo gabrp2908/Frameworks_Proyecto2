@@ -1,0 +1,74 @@
+<div class="bars-clock">
+  <div class="bars-header">
+    <h3>Barras de Progreso Temporal</h3>
+    <p>Cada barra representa el progreso de una unidad de tiempo</p>
+  </div>
+
+  <div class="bars-container">
+    <!-- Barra de Horas -->
+    <div class="bar-unit">
+      <div class="bar-info">
+        <span class="bar-label">{{ getUnitLabel('hours') }}</span>
+        <span class="bar-values">
+          {{ getFormattedValue(getCurrentValue('hours'), 'hours') }}/{{ getMaxValue('hours') }}
+        </span>
+      </div>
+      <div class="bar-track">
+        <div 
+          class="bar-fill hours-fill" 
+          [style.width.%]="getBarProgress('hours')"
+          [style.background]="getBarColor('hours')"
+          [style.animation-delay]="getBarAnimationDelay('hours')">
+          <div class="bar-glow"></div>
+        </div>
+      </div>
+      <div class="bar-percentage">
+        {{ getBarProgress('hours').toFixed(1) }}%
+      </div>
+    </div>
+
+    <!-- Barra de Minutos -->
+    <div class="bar-unit">
+      <div class="bar-info">
+        <span class="bar-label">{{ getUnitLabel('minutes') }}</span>
+        <span class="bar-values">
+          {{ getFormattedValue(getCurrentValue('minutes'), 'minutes') }}/{{ getMaxValue('minutes') }}
+        </span>
+      </div>
+      <div class="bar-track">
+        <div 
+          class="bar-fill minutes-fill" 
+          [style.width.%]="getBarProgress('minutes')"
+          [style.background]="getBarColor('minutes')"
+          [style.animation-delay]="getBarAnimationDelay('minutes')">
+          <div class="bar-glow"></div>
+        </div>
+      </div>
+      <div class="bar-percentage">
+        {{ getBarProgress('minutes').toFixed(1) }}%
+      </div>
+    </div>
+
+    <!-- Barra de Segundos -->
+    <div class="bar-unit">
+      <div class="bar-info">
+        <span class="bar-label">{{ getUnitLabel('seconds') }}</span>
+        <span class="bar-values">
+          {{ getFormattedValue(getCurrentValue('seconds'), 'seconds') }}/{{ getMaxValue('seconds') }}
+        </span>
+      </div>
+      <div class="bar-track">
+        <div 
+          class="bar-fill seconds-fill" 
+          [style.width.%]="getBarProgress('seconds')"
+          [style.background]="getBarColor('seconds')"
+          [style.animation-delay]="getBarAnimationDelay('seconds')">
+          <div class="bar-glow"></div>
+        </div>
+      </div>
+      <div class="bar-percentage">
+        {{ getBarProgress('seconds').toFixed(1) }}%
+      </div>
+    </div>
+  </div>
+</div>
