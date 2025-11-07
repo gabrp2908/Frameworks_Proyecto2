@@ -44,6 +44,12 @@
       <app-analog-clock 
         *ngSwitchCase="'analog'">
       </app-analog-clock>
+
+      <app-binary-clock 
+        *ngSwitchCase="'binary'"
+        [currentTime]="currentTime">
+      </app-binary-clock>
+      
     </ng-container>
   </div>
 </div>

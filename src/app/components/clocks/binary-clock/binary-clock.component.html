@@ -1,0 +1,34 @@
+<div class="binary-clock">
+  <div class="binary-display">
+    <div class="time-unit">
+      <span class="label">Horas ({{ getSafeHours().toString().padStart(2, '0') }})</span>
+      <div class="binary-digits">
+        <span *ngFor="let bit of toBinary(getSafeHours(), 5).split(''); let i = index" 
+              class="binary-bit" 
+              [class.active]="bit === '1'">
+          {{ bit }}
+        </span>
+      </div>
+    </div>
+    <div class="time-unit">
+      <span class="label">Minutos ({{ getSafeMinutes().toString().padStart(2, '0') }})</span>
+      <div class="binary-digits">
+        <span *ngFor="let bit of toBinary(getSafeMinutes(), 6).split(''); let i = index" 
+              class="binary-bit" 
+              [class.active]="bit === '1'">
+          {{ bit }}
+        </span>
+      </div>
+    </div>
+    <div class="time-unit">
+      <span class="label">Segundos ({{ getSafeSeconds().toString().padStart(2, '0') }})</span>
+      <div class="binary-digits">
+        <span *ngFor="let bit of toBinary(getSafeSeconds(), 6).split(''); let i = index" 
+              class="binary-bit" 
+              [class.active]="bit === '1'">
+          {{ bit }}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
