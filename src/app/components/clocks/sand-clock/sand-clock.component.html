@@ -1,0 +1,105 @@
+<div class="sand-clock">
+  <div class="sand-clocks-container">
+    <!-- Reloj de Arena para Horas -->
+    <div class="sand-clock-unit">
+      <div class="sand-clock-info">
+        <span class="sand-clock-label">{{ getUnitLabel('hours') }}</span>
+        <span class="sand-clock-values">
+          {{ getFormattedValue(getCurrentValue('hours'), 'hours') }}/{{ getMaxValue('hours') }}
+        </span>
+      </div>
+      
+  <div class="sand-clock-wrapper" [class.flip]="flipFlags.hours">
+        <div class="sand-clock">
+          <div class="sand-clock-top">
+            <div 
+              class="sand-fill"
+              [style.background]="getSandColor('hours')"
+              [style.height.%]="(100 - getSandProgress('hours'))">
+            </div>
+          </div>
+          <div class="sand-clock-middle"></div>
+          <div class="sand-clock-bottom">
+            <div 
+              class="sand-fill"
+              [style.background]="getSandColor('hours')"
+              [style.height.%]="getSandProgress('hours')">
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="sand-clock-percentage">
+        {{ getSandProgress('hours').toFixed(1) }}%
+      </div>
+    </div>
+
+    <!-- Reloj de Arena para Minutos -->
+    <div class="sand-clock-unit">
+      <div class="sand-clock-info">
+        <span class="sand-clock-label">{{ getUnitLabel('minutes') }}</span>
+        <span class="sand-clock-values">
+          {{ getFormattedValue(getCurrentValue('minutes'), 'minutes') }}/{{ getMaxValue('minutes') }}
+        </span>
+      </div>
+      
+  <div class="sand-clock-wrapper" [class.flip]="flipFlags.minutes">
+        <div class="sand-clock">
+          <div class="sand-clock-top">
+            <div 
+              class="sand-fill"
+              [style.background]="getSandColor('minutes')"
+              [style.height.%]="(100 - getSandProgress('minutes'))">
+            </div>
+          </div>
+          <div class="sand-clock-middle"></div>
+          <div class="sand-clock-bottom">
+            <div 
+              class="sand-fill"
+              [style.background]="getSandColor('minutes')"
+              [style.height.%]="getSandProgress('minutes')">
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="sand-clock-percentage">
+        {{ getSandProgress('minutes').toFixed(1) }}%
+      </div>
+    </div>
+
+    <!-- Reloj de Arena para Segundos -->
+    <div class="sand-clock-unit">
+      <div class="sand-clock-info">
+        <span class="sand-clock-label">{{ getUnitLabel('seconds') }}</span>
+        <span class="sand-clock-values">
+          {{ getFormattedValue(getCurrentValue('seconds'), 'seconds') }}/{{ getMaxValue('seconds') }}
+        </span>
+      </div>
+      
+  <div class="sand-clock-wrapper" [class.flip]="flipFlags.seconds">
+        <div class="sand-clock">
+          <div class="sand-clock-top">
+            <div 
+              class="sand-fill"
+              [style.background]="getSandColor('seconds')"
+              [style.height.%]="(100 - getSandProgress('seconds'))">
+            </div>
+          </div>
+          <div class="sand-clock-middle"></div>
+          <div class="sand-clock-bottom">
+            <div 
+              class="sand-fill"
+              [style.background]="getSandColor('seconds')"
+              [style.height.%]="getSandProgress('seconds')">
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="sand-clock-percentage">
+        {{ getSandProgress('seconds').toFixed(1) }}%
+      </div>
+    </div>
+  </div>
+</div>

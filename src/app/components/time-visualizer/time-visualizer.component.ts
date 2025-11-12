@@ -9,9 +9,7 @@ import { AnalogClockComponent } from '../clocks/analog-clock/analog-clock.compon
 import { BinaryClockComponent } from '../clocks/binary-clock/binary-clock.component';
 import { BarsClockComponent } from '../clocks/bars-clock/bars-clock.component';
 import { OrbitalClockComponent } from '../clocks/orbital-clock/orbital-clock.component';
-
-
-
+import { SandClockComponent } from '../clocks/sand-clock/sand-clock.component';
 interface Visualizer {
   value: string;
   label: string;
@@ -29,6 +27,7 @@ interface Visualizer {
     BinaryClockComponent,
     BarsClockComponent,
     OrbitalClockComponent,
+    SandClockComponent,
   ],
   templateUrl: './time-visualizer.component.html',
   styleUrls: ['./time-visualizer.component.css']
@@ -63,6 +62,12 @@ export class TimeVisualizerComponent implements OnInit, OnDestroy {
       label: 'Reloj Planetario', 
       description: 'Planetas orbitando representando el tiempo',
       component: OrbitalClockComponent
+    },
+    {
+      value: 'sand',
+      label: 'Reloj de Arena',
+      description: 'Reloj de arena con rellenos que representan horas, minutos y segundos',
+      component: SandClockComponent
     }
   ];
 
