@@ -54,7 +54,11 @@
         *ngSwitchCase="'bars'"
         [currentTime]="currentTime">
       </app-bars-clock>
-      
+
+      <app-orbital-clock 
+        *ngSwitchCase="'orbital'"
+        [currentTime]="currentTime">
+      </app-orbital-clock>
       
     </ng-container>
   </div>

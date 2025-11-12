@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, Type } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Subscription } from 'rxjs';
@@ -8,13 +8,15 @@ import { TimeService, TimeState } from '../../services/time.service';
 import { AnalogClockComponent } from '../clocks/analog-clock/analog-clock.component';
 import { BinaryClockComponent } from '../clocks/binary-clock/binary-clock.component';
 import { BarsClockComponent } from '../clocks/bars-clock/bars-clock.component';
+import { OrbitalClockComponent } from '../clocks/orbital-clock/orbital-clock.component';
+
 
 
 interface Visualizer {
   value: string;
   label: string;
   description: string;
-  component: any;
+  component: Type<any>;
 }
 
 @Component({
@@ -26,6 +28,7 @@ interface Visualizer {
     AnalogClockComponent,
     BinaryClockComponent,
     BarsClockComponent,
+    OrbitalClockComponent,
   ],
   templateUrl: './time-visualizer.component.html',
   styleUrls: ['./time-visualizer.component.css']
@@ -54,6 +57,12 @@ export class TimeVisualizerComponent implements OnInit, OnDestroy {
       label: 'Reloj de Barras', 
       description: 'Barras que crecen con cada unidad de tiempo',
       component: BarsClockComponent
+    },
+    { 
+      value: 'orbital', 
+      label: 'Reloj Planetario', 
+      description: 'Planetas orbitando representando el tiempo',
+      component: OrbitalClockComponent
     }
   ];
 
@@ -88,7 +97,7 @@ export class TimeVisualizerComponent implements OnInit, OnDestroy {
     return visualizer ? visualizer.description : 'Descripción no disponible';
   }
 
-  getCurrentVisualizer(): any {
+  getCurrentVisualizer(): Type<any> | null {
     const visualizer = this.visualizers.find(viz => viz.value === this.selectedVisualizer);
     return visualizer ? visualizer.component : null;
   }

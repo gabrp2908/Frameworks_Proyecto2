@@ -1,0 +1,66 @@
+<div class="orbital-clock">
+  <div class="space-background">
+    <!-- Estrellas de fondo -->
+    <div *ngFor="let star of stars; let i = index" 
+         class="star"
+         [style.left.%]="star.x"
+         [style.top.%]="star.y"
+         [style.width.px]="star.size"
+         [style.height.px]="star.size"
+         [style.opacity]="star.opacity"
+         [style.animation-delay]="i * 0.1 + 's'">
+    </div>
+    
+    <!-- Sistema solar -->
+    <div class="solar-system">
+      
+      <!-- Sol central -->
+      <div class="sun">
+        <div class="sun-core"></div>
+        <div class="sun-glow"></div>
+      </div>
+
+      <!-- Órbitas visibles -->
+      <div class="orbits">
+        <div class="orbit-circle hour-orbit"></div>
+        <div class="orbit-circle minute-orbit"></div>
+        <div class="orbit-circle second-orbit"></div>
+      </div>
+
+      <!-- Planetas -->
+   <div *ngFor="let planet of planets" 
+     class="planet"
+     [ngClass]="'planet-' + planet.type"
+     [style.left.px]="planet.position.x"
+     [style.top.px]="planet.position.y"
+     [style.transform]="'translate(-50%, -50%)'">
+        
+        <!-- Planeta principal -->
+        <div class="planet-body" [style.background]="planet.color">
+          <div class="planet-shine"></div>
+        </div>
+
+        <!-- Etiqueta del planeta -->
+        <div class="planet-label">
+          {{ planet.label }}
+        </div>
+      </div>
+
+      <!-- Leyenda -->
+      <div class="system-info">
+        <div class="info-item">
+          <span class="info-dot hour-dot"></span>
+          Horas
+        </div>
+        <div class="info-item">
+          <span class="info-dot minute-dot"></span>
+          Minutos
+        </div>
+        <div class="info-item">
+          <span class="info-dot second-dot"></span>
+          Segundos
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
