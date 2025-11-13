@@ -10,6 +10,7 @@ import { BinaryClockComponent } from '../clocks/binary-clock/binary-clock.compon
 import { BarsClockComponent } from '../clocks/bars-clock/bars-clock.component';
 import { OrbitalClockComponent } from '../clocks/orbital-clock/orbital-clock.component';
 import { SandClockComponent } from '../clocks/sand-clock/sand-clock.component';
+import { DigitalClockComponent } from '../clocks/digital-clock/digital-clock.component';
 interface Visualizer {
   value: string;
   label: string;
@@ -28,6 +29,7 @@ interface Visualizer {
     BarsClockComponent,
     OrbitalClockComponent,
     SandClockComponent,
+    DigitalClockComponent,
   ],
   templateUrl: './time-visualizer.component.html',
   styleUrls: ['./time-visualizer.component.css']
@@ -68,6 +70,12 @@ export class TimeVisualizerComponent implements OnInit, OnDestroy {
       label: 'Reloj de Arena',
       description: 'Reloj de arena con rellenos que representan horas, minutos y segundos',
       component: SandClockComponent
+    },
+    {
+      value: 'digital',
+      label: 'Reloj Digital',
+      description: 'Reloj digital que emplea display de 7 segmentos para la visualización de horas, minutos y segundos.',
+      component: DigitalClockComponent
     }
   ];
 

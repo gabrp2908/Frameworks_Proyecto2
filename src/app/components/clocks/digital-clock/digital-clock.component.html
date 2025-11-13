@@ -1,0 +1,35 @@
+<div class="digital-clock">
+
+  <div class="time-display">
+    <div class="time-section hours">
+      <ng-container *ngFor="let digit of getDigits(getSafeHours())"
+                    [ngTemplateOutlet]="digitSegment"
+                    [ngTemplateOutletContext]="{ $implicit: digit, digit: digit }">
+      </ng-container>
+    </div>
+    <div class="colon">:</div>
+    <div class="time-section minutes">
+      <ng-container *ngFor="let digit of getDigits(getSafeMinutes())"
+                    [ngTemplateOutlet]="digitSegment"
+                    [ngTemplateOutletContext]="{ $implicit: digit, digit: digit }">
+      </ng-container>
+    </div>
+    <div class="colon">:</div>
+    <div class="time-section seconds">
+      <ng-container *ngFor="let digit of getDigits(getSafeSeconds())"
+                    [ngTemplateOutlet]="digitSegment"
+                    [ngTemplateOutletContext]="{ $implicit: digit, digit: digit }">
+      </ng-container>
+    </div>
+  </div>
+</div>
+
+<!-- Componente para dígito de 7 segmentos -->
+<ng-template #digitSegment let-digit="digit">
+  <div class="seven-segment">
+    <div *ngFor="let seg of ['a', 'b', 'c', 'd', 'e', 'f', 'g']" 
+      class="segment {{seg}}" 
+      [class.on]="isSegmentOn(digit, seg)">
+    </div>
+  </div>
+</ng-template>
