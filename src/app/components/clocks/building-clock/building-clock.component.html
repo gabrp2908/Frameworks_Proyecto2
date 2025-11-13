@@ -1,0 +1,57 @@
+<div class="building-clock">
+  <div class="building-header">
+    <p class="status-description">{{ getStatusDescription() }}</p>
+  </div>
+
+  <div class="building-container">
+    <!-- Edificio -->
+    <div class="building">
+      <!-- Pisos del edificio -->
+      <div 
+        *ngFor="let floor of getFloors(); let floorIndex = index" 
+        class="floor"
+        [class.current-hour-floor]="(totalFloors - 1 - floorIndex) === getSafeHours()">
+        
+        <!-- Número de piso -->
+        <div class="floor-number">
+          {{ totalFloors - 1 - floorIndex === 0 ? 'PB' : totalFloors - 1 - floorIndex }}
+        </div>
+        
+        <!-- Ventanas del piso -->
+        <div class="windows-row">
+          <div 
+            *ngFor="let window of getWindows(floorIndex)" 
+            class="window"
+            [class.lit]="isWindowLit(floorIndex, window)"
+            [class.current-minute-window]="isWindowLit(floorIndex, window) && (totalFloors - 1 - floorIndex) === getSafeHours() && window === getSafeMinutes() - 1">
+          </div>
+        </div>
+      </div>
+
+      <!-- Entrada del edificio -->
+      <div class="building-entrance">
+        <div class="entrance-door">
+          <div 
+            class="entrance-light" 
+            [class]="getEntranceLightClass()">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="building-legend">
+    <div class="legend-item">
+      <div class="legend-color floor-legend"></div>
+      <span>Piso actual (Hora)</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-color window-legend"></div>
+      <span>Ventanas iluminadas (Minutos)</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-color entrance-legend"></div>
+      <span>Entrada (Segundos)</span>
+    </div>
+  </div>
+</div>

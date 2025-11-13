@@ -11,6 +11,8 @@ import { BarsClockComponent } from '../clocks/bars-clock/bars-clock.component';
 import { OrbitalClockComponent } from '../clocks/orbital-clock/orbital-clock.component';
 import { SandClockComponent } from '../clocks/sand-clock/sand-clock.component';
 import { DigitalClockComponent } from '../clocks/digital-clock/digital-clock.component';
+import { BuildingClockComponent } from '../clocks/building-clock/building-clock.component';
+
 interface Visualizer {
   value: string;
   label: string;
@@ -30,6 +32,7 @@ interface Visualizer {
     OrbitalClockComponent,
     SandClockComponent,
     DigitalClockComponent,
+    BuildingClockComponent,
   ],
   templateUrl: './time-visualizer.component.html',
   styleUrls: ['./time-visualizer.component.css']
@@ -44,7 +47,7 @@ export class TimeVisualizerComponent implements OnInit, OnDestroy {
     {
     value: 'analog',
     label: 'Reloj Analógico',
-    description: 'Un reloj analógico clásico con manecillas que se actualizan cada segundo.',
+    description: 'Un reloj analógico clásico con manecillas que se actualizan cada segundo',
     component: AnalogClockComponent
     },
     { 
@@ -74,9 +77,15 @@ export class TimeVisualizerComponent implements OnInit, OnDestroy {
     {
       value: 'digital',
       label: 'Reloj Digital',
-      description: 'Reloj digital que emplea display de 7 segmentos para la visualización de horas, minutos y segundos.',
+      description: 'Reloj digital que emplea display de 7 segmentos para la visualización de horas, minutos y segundos',
       component: DigitalClockComponent
-    }
+    },
+    {
+      value: 'building',
+      label: 'Edificio con Ventanas Iluminadas',
+      description: 'Un edificio con 24 pisos los cuales representan las horas del día. Cada piso cuenta con 60 ventanas que se iluminan al pasar los minutos',
+      component: BuildingClockComponent
+    },
   ];
 
   constructor(private timeService: TimeService) {

@@ -69,6 +69,11 @@
         *ngSwitchCase="'digital'"
         [currentTime]="currentTime">
       </app-digital-clock>
+
+      <app-building-clock 
+        *ngSwitchCase="'building'"
+        [currentTime]="currentTime">
+      </app-building-clock>
       
     </ng-container>
   </div>
