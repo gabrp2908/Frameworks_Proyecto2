@@ -1,0 +1,122 @@
+<div class="oscilloscope-clock">
+  
+
+  <div class="oscilloscope-body">
+    <!-- Panel de control -->
+    <div class="control-panel">
+      <!-- Trigger control removed per request -->
+      
+      <div class="control-group">
+        <div class="control-label">TIME/DIV</div>
+        <div class="control-value">1s</div>
+      </div>
+      
+      <div class="control-group">
+        <div class="control-label">MODE</div>
+        <div class="control-value">TRIPLE</div>
+      </div>
+    </div>
+
+    <!-- Pantalla del osciloscopio -->
+    <div class="oscilloscope-screen">
+      <svg [attr.width]="canvasWidth" [attr.height]="canvasHeight" class="wave-display">
+        <!-- Fondo de la pantalla -->
+        <rect [attr.width]="canvasWidth" [attr.height]="canvasHeight" class="screen-background"/>
+        
+        <!-- Grilla -->
+        <g class="grid">
+          <line *ngFor="let point of getGridPoints()" 
+                [attr.x1]="point.x" [attr.y1]="0"
+                [attr.x2]="point.x" [attr.y2]="canvasHeight"
+                class="grid-line"/>
+          <line *ngFor="let point of getGridPoints()" 
+                [attr.x1]="0" [attr.y1]="point.y"
+                [attr.x2]="canvasWidth" [attr.y2]="point.y"
+                class="grid-line"/>
+        </g>
+        
+        <!-- Ejes -->
+        <line [attr.x1]="0" [attr.y1]="canvasHeight/2" 
+              [attr.x2]="canvasWidth" [attr.y2]="canvasHeight/2" 
+              class="axis-line"/>
+        <line [attr.x1]="canvasWidth/2" [attr.y1]="0" 
+              [attr.x2]="canvasWidth/2" [attr.y2]="canvasHeight" 
+              class="axis-line"/>
+        
+        <!-- Onda de Horas (Cuadrada) -->
+        <polyline *ngIf="getSquareWavePoints().length > 0"
+            [attr.points]="getSquarePointsString()"
+            [attr.stroke]="getWaveColor('hours')"
+            [attr.stroke-width]="getWaveWidth('hours')"
+            fill="none"
+            class="wave-line hours-wave"/>
+        
+        <!-- Onda de Minutos (Triangular) -->
+        <polyline *ngIf="getTriangleWavePoints().length > 0"
+            [attr.points]="getTrianglePointsString()"
+            [attr.stroke]="getWaveColor('minutes')"
+            [attr.stroke-width]="getWaveWidth('minutes')"
+            fill="none"
+            class="wave-line minutes-wave"/>
+        
+        <!-- Onda de Segundos (Sinusoidal) -->
+        <polyline *ngIf="getSineWavePoints().length > 0"
+            [attr.points]="getSinePointsString()"
+            [attr.stroke]="getWaveColor('seconds')"
+            [attr.stroke-width]="getWaveWidth('seconds')"
+            fill="none"
+            class="wave-line seconds-wave"/>
+        
+        <!-- Marcador de tiempo actual -->
+        <circle [attr.cx]="(getSafeSeconds() / 60) * canvasWidth" 
+                [attr.cy]="canvasHeight/2" 
+                r="3" 
+                fill="#00ff00"
+                class="time-cursor"/>
+      </svg>
+    </div>
+
+    <!-- Información de canales -->
+    <div class="channel-info">
+      <div class="channel" [style.color]="getWaveColor('hours')">
+        <div class="channel-label">CH1 - HORAS</div>
+        <div class="channel-data">
+          <span>VOLT: {{ getVoltageLevel('hours') | number:'1.1-1' }}V</span>
+          <span>FREQ: {{ getFrequency('hours') }}</span>
+        </div>
+      </div>
+      
+      <div class="channel" [style.color]="getWaveColor('minutes')">
+        <div class="channel-label">CH2 - MINUTOS</div>
+        <div class="channel-data">
+          <span>VOLT: {{ getVoltageLevel('minutes') | number:'1.1-1' }}V</span>
+          <span>FREQ: {{ getFrequency('minutes') }}</span>
+        </div>
+      </div>
+      
+      <div class="channel" [style.color]="getWaveColor('seconds')">
+        <div class="channel-label">CH3 - SEGUNDOS</div>
+        <div class="channel-data">
+          <span>VOLT: {{ getVoltageLevel('seconds') | number:'1.1-1' }}V</span>
+          <span>FREQ: {{ getFrequency('seconds') }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Leyenda de ondas -->
+  <div class="wave-legend">
+    <div class="legend-item">
+      <div class="legend-color" [style.background]="getWaveColor('hours')"></div>
+      <span>{{ getWaveDescription('hours') }}</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-color" [style.background]="getWaveColor('minutes')"></div>
+      <span>{{ getWaveDescription('minutes') }}</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-color" [style.background]="getWaveColor('seconds')"></div>
+      <span>{{ getWaveDescription('seconds') }}</span>
+    </div>
+  </div>
+</div>

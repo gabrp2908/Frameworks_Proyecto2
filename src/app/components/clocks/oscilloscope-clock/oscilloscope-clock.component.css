@@ -1,0 +1,257 @@
+.oscilloscope-clock {
+  padding: 2rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* center content horizontally */
+  justify-content: center; /* center content vertically inside available height */
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  border-radius: 20px;
+  color: #00ff00;
+  font-family: 'Courier New', monospace;
+  border: 3px solid #444;
+  margin: 0 auto; /* center the component horizontally within its parent */
+  max-width: 1200px;
+}
+
+.oscilloscope-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #00ff00;
+  padding-bottom: 1rem;
+}
+
+.oscilloscope-header h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #00ff00;
+  text-shadow: 0 0 10px #00ff00;
+  letter-spacing: 2px;
+}
+
+.time-display {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin: 0.5rem 0;
+  color: #ffff44;
+  text-shadow: 0 0 8px #ffff44;
+  font-family: 'Digital', 'Courier New', monospace;
+}
+
+.subtitle {
+  margin: 0;
+  color: #ccc;
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+.oscilloscope-body {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center; 
+  margin-bottom: 2rem;
+}
+
+.control-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 120px;
+}
+
+.control-group {
+  background: #333;
+  padding: 0.8rem;
+  border-radius: 8px;
+  border: 1px solid #555;
+}
+
+.control-label {
+  font-size: 0.8rem;
+  color: #888;
+  margin-bottom: 0.3rem;
+  text-transform: uppercase;
+}
+
+.control-value {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #00ff00;
+}
+
+.trigger-status {
+  transition: all 0.5s ease;
+}
+
+.trigger-active {
+  color: #ff4444 !important;
+  text-shadow: 0 0 8px #ff4444;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.oscilloscope-screen {
+  flex: 1;
+  background: #111;
+  border: 15px solid #333;
+  border-radius: 10px;
+  box-shadow: 
+    inset 0 0 20px rgba(0, 0, 0, 0.8),
+    0 0 30px rgba(0, 255, 0, 0.1);
+  padding: 1rem;
+}
+
+.wave-display {
+  display: block;
+}
+
+.screen-background {
+  fill: #000000;
+}
+
+.grid-line {
+  stroke: #222;
+  stroke-width: 1;
+}
+
+.axis-line {
+  stroke: #333;
+  stroke-width: 1;
+  stroke-dasharray: 5,5;
+}
+
+.wave-line {
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 3px currentColor);
+}
+
+.hours-wave {
+  stroke: #ff4444;
+  animation: wave-pulse 2s infinite;
+}
+
+.minutes-wave {
+  stroke: #4444ff;
+  animation: wave-pulse 1.5s infinite;
+}
+
+.seconds-wave {
+  stroke: #ffff44;
+  animation: wave-pulse 1s infinite;
+}
+
+@keyframes wave-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+.time-cursor {
+  animation: cursor-blink 0.5s infinite;
+  filter: drop-shadow(0 0 4px #00ff00);
+}
+
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.channel-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 180px;
+}
+
+.channel {
+  background: #222;
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 4px solid currentColor;
+}
+
+.channel-label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  text-shadow: 0 0 5px currentColor;
+}
+
+.channel-data {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-size: 0.8rem;
+  color: #ccc;
+}
+
+.wave-legend {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+  padding-top: 1rem;
+  border-top: 1px solid #444;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 0.9rem;
+  background: #333;
+  padding: 0.8rem 1.2rem;
+  border-radius: 10px;
+  border: 1px solid #555;
+}
+
+.legend-color {
+  width: 20px;
+  height: 4px;
+  border-radius: 2px;
+  box-shadow: 0 0 5px currentColor;
+}
+
+/* Efectos de brillo para las ondas */
+.hours-wave {
+  filter: drop-shadow(0 0 2px #ff4444) drop-shadow(0 0 4px rgba(255, 68, 68, 0.3));
+}
+
+.minutes-wave {
+  filter: drop-shadow(0 0 2px #4444ff) drop-shadow(0 0 4px rgba(68, 68, 255, 0.3));
+}
+
+.seconds-wave {
+  filter: drop-shadow(0 0 2px #ffff44) drop-shadow(0 0 4px rgba(255, 255, 68, 0.3));
+}
+
+/* Efecto de escaneo CRT */
+.oscilloscope-screen::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 50%,
+    rgba(0, 255, 0, 0.02) 50%
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+  border-radius: 5px;
+  animation: scanline 8s linear infinite;
+}
+
+@keyframes scanline {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 100%; }
+}

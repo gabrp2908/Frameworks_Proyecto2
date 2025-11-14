@@ -74,7 +74,12 @@
         *ngSwitchCase="'building'"
         [currentTime]="currentTime">
       </app-building-clock>
-      
+
+      <app-oscilloscope-clock 
+        *ngSwitchCase="'oscilloscope'"
+        [currentTime]="currentTime">
+      </app-oscilloscope-clock>
+
     </ng-container>
   </div>
 </div>

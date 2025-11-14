@@ -12,6 +12,7 @@ import { OrbitalClockComponent } from '../clocks/orbital-clock/orbital-clock.com
 import { SandClockComponent } from '../clocks/sand-clock/sand-clock.component';
 import { DigitalClockComponent } from '../clocks/digital-clock/digital-clock.component';
 import { BuildingClockComponent } from '../clocks/building-clock/building-clock.component';
+import { OscilloscopeClockComponent } from '../clocks/oscilloscope-clock/oscilloscope-clock.component';
 
 interface Visualizer {
   value: string;
@@ -33,6 +34,7 @@ interface Visualizer {
     SandClockComponent,
     DigitalClockComponent,
     BuildingClockComponent,
+    OscilloscopeClockComponent,
   ],
   templateUrl: './time-visualizer.component.html',
   styleUrls: ['./time-visualizer.component.css']
@@ -85,6 +87,12 @@ export class TimeVisualizerComponent implements OnInit, OnDestroy {
       label: 'Edificio con Ventanas Iluminadas',
       description: 'Un edificio con 24 pisos los cuales representan las horas del día. Cada piso cuenta con 60 ventanas que se iluminan al pasar los minutos',
       component: BuildingClockComponent
+    },
+    {
+      value: 'oscilloscope',
+      label: 'Osciloscopio',
+      description: 'Un osciloscopio digital que permite la visualización del tiempo con una onda de pulsos cuadrados (horas), una onda triangular (minutos) y una onda sinusoidal (segundos)',
+      component: OscilloscopeClockComponent
     },
   ];
 
