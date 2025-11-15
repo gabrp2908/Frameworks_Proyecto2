@@ -23,7 +23,7 @@
             *ngFor="let window of getWindows(floorIndex)" 
             class="window"
             [class.lit]="isWindowLit(floorIndex, window)"
-            [class.current-minute-window]="isWindowLit(floorIndex, window) && (totalFloors - 1 - floorIndex) === getSafeHours() && window === getSafeMinutes() - 1">
+            [class.current-minute-window]="isCurrentMinuteWindow(floorIndex, window)">
           </div>
         </div>
       </div>

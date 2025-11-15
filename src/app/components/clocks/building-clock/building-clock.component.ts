@@ -14,7 +14,7 @@ export class BuildingClockComponent {
 
   // Total de pisos y ventanas
   readonly totalFloors = 24;
-  readonly windowsPerFloor = 60;
+  readonly windowsPerFloor = 59; 
 
   getSafeHours(): number { 
     return this.currentTime?.hours || 0; 
@@ -38,7 +38,7 @@ export class BuildingClockComponent {
     return Array.from({ length: this.windowsPerFloor }, (_, i) => i);
   }
 
-  // Determinar si una ventana debe estar iluminada
+  // Determinar si una ventana debe estar iluminada - LOGICA MEJORADA
   isWindowLit(floorIndex: number, windowIndex: number): boolean {
     const currentHour = this.getSafeHours();
     const currentMinute = this.getSafeMinutes();
@@ -49,7 +49,7 @@ export class BuildingClockComponent {
     
     if (floorNumber === currentHour) {
       // En el piso de la hora actual, las ventanas se iluminan según los minutos
-      return windowIndex < currentMinute;
+      return windowIndex <= currentMinute;
     } else if (floorNumber < currentHour) {
       // Pisos con horas anteriores - todas las ventanas iluminadas
       return true;
@@ -57,6 +57,15 @@ export class BuildingClockComponent {
     
     // Pisos con horas futuras - todas apagadas
     return false;
+  }
+
+  // Determinar si es la ventana del minuto actual
+  isCurrentMinuteWindow(floorIndex: number, windowIndex: number): boolean {
+    const currentHour = this.getSafeHours();
+    const currentMinute = this.getSafeMinutes();
+    const floorNumber = this.totalFloors - 1 - floorIndex;
+    
+    return floorNumber === currentHour && windowIndex === currentMinute;
   }
 
   // Determinar si la luz de la entrada debe estar parpadeando (segundos pares)
@@ -77,8 +86,9 @@ export class BuildingClockComponent {
     const hour = this.getSafeHours();
     const minute = this.getSafeMinutes();
     const floorLabel = hour === 0 ? 'Planta Baja' : `Piso ${hour}`;
+    const litWindows = minute + 1;
     
-    return `Hora ${hour}:${minute.toString().padStart(2, '0')} - ${floorLabel} con ${minute} ventanas iluminadas`;
+    return `Hora ${hour}:${minute.toString().padStart(2, '0')} - ${floorLabel} con ${litWindows} ventanas iluminadas`;
   }
 
   // Obtener clase CSS para la animación de parpadeo
