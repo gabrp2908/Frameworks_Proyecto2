@@ -1,0 +1,278 @@
+.solar-clock {
+  padding: 2rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #1a1a2e;
+  border-radius: 20px;
+  color: white;
+  font-family: 'Arial', sans-serif;
+}
+
+.solar-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.solar-header h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #ffd700;
+}
+
+.time-display {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0.5rem 0;
+  font-family: 'Courier New', monospace;
+  color: #ffa726;
+}
+
+.time-description {
+  margin: 0;
+  color: #b3e5fc;
+  font-size: 1.1rem;
+}
+
+.detailed-status {
+  margin: 0.5rem 0 0 0;
+  color: #ffd700;
+  font-size: 1rem;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  display: inline-block;
+}
+
+.solar-scene {
+  flex: 1;
+  position: relative;
+  border-radius: 15px;
+  min-height: 400px;
+  transition: background 1s ease;
+  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+/* Estrellas */
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle 3s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* NUBES - Con movimiento suave */
+.cloud {
+  position: absolute;
+  opacity: 0.9;
+  transition: left 1s linear; /* Movimiento suave y constante */
+}
+
+.cloud-part {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+}
+
+/* Tamaños de nubes */
+.cloud-small { width: 60px; height: 25px; }
+.cloud-medium { width: 90px; height: 35px; }
+.cloud-large { width: 120px; height: 45px; }
+
+.cloud-small .cloud-part:nth-child(1) { width: 18px; height: 18px; top: 5px; left: 5px; }
+.cloud-small .cloud-part:nth-child(2) { width: 22px; height: 22px; top: 0; left: 15px; }
+.cloud-small .cloud-part:nth-child(3) { width: 18px; height: 18px; top: 5px; left: 32px; }
+
+.cloud-medium .cloud-part:nth-child(1) { width: 25px; height: 25px; top: 5px; left: 5px; }
+.cloud-medium .cloud-part:nth-child(2) { width: 35px; height: 35px; top: 0; left: 20px; }
+.cloud-medium .cloud-part:nth-child(3) { width: 25px; height: 25px; top: 5px; left: 45px; }
+
+.cloud-large .cloud-part:nth-child(1) { width: 35px; height: 35px; top: 5px; left: 10px; }
+.cloud-large .cloud-part:nth-child(2) { width: 45px; height: 45px; top: 0; left: 30px; }
+.cloud-large .cloud-part:nth-child(3) { width: 35px; height: 35px; top: 5px; left: 60px; }
+
+/* Sol */
+.sun-orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  transform: translate(-50%, -50%);
+}
+
+.sun {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60px;
+  height: 60px;
+  margin: -30px 0 0 -30px;
+  background: radial-gradient(circle, #ffd700, #ffa726);
+  border-radius: 50%;
+  transition: all 1s ease;
+  box-shadow: 0 0 40px #ffa726;
+}
+
+.sun-glow {
+  position: absolute;
+  top: -10px; left: -10px; right: -10px; bottom: -10px;
+  background: radial-gradient(circle, transparent 30%, rgba(255, 215, 0, 0.3) 70%);
+  border-radius: 50%;
+  animation: sun-pulse 2s infinite ease-in-out;
+}
+
+@keyframes sun-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(1.1); opacity: 1; }
+}
+
+/* Montañas */
+.mountains {
+  position: absolute;
+  bottom: 100px;
+  left: 0;
+  right: 0;
+  height: 150px;
+}
+
+.mountain {
+  position: absolute;
+  bottom: 0;
+  background: linear-gradient(45deg, #37474f, #263238);
+  border-radius: 10px 10px 0 0;
+}
+
+.mountain-1 { left: 0; width: 200px; height: 120px; clip-path: polygon(0 100%, 100% 100%, 50% 0); }
+.mountain-2 { left: 150px; width: 180px; height: 140px; clip-path: polygon(0 100%, 100% 100%, 50% 20%); }
+.mountain-3 { right: 0; width: 220px; height: 100px; clip-path: polygon(0 100%, 100% 100%, 50% 10%); }
+
+/* Suelo y flores */
+.ground {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(0deg, #5d4037, #8d6e63);
+}
+
+.flower {
+  position: absolute;
+  bottom: 20px;
+  width: 0;
+  height: 0;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-bottom: 20px solid #66bb6a;
+  animation: flower-grow 2s ease-out;
+}
+
+.flower-petal {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  top: -15px;
+  left: -4px;
+  animation: petal-rotate 4s infinite ease-in-out;
+}
+
+.flower-petal:nth-child(1) { transform: rotate(0deg) translate(10px); }
+.flower-petal:nth-child(2) { transform: rotate(90deg) translate(10px); }
+.flower-petal:nth-child(3) { transform: rotate(180deg) translate(10px); }
+.flower-petal:nth-child(4) { transform: rotate(270deg) translate(10px); }
+
+@keyframes flower-grow {
+  0% { transform: scale(0); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes petal-rotate {
+  0%, 100% { transform: rotate(0deg) translate(10px); }
+  50% { transform: rotate(5deg) translate(12px); }
+}
+
+.horizon {
+  position: absolute;
+  bottom: 100px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Información */
+.solar-info {
+  margin-top: 1.5rem;
+}
+
+.info-panel {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.info-item {
+  text-align: center;
+}
+
+.info-label {
+  font-size: 0.8rem;
+  color: #b3e5fc;
+  margin-bottom: 0.3rem;
+}
+
+.info-value {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ffd700;
+  font-family: 'Courier New', monospace;
+}
+
+.info-subtext {
+  font-size: 0.7rem;
+  color: #b3e5fc;
+  margin-top: 0.2rem;
+  opacity: 0.8;
+}
+
+/* Leyenda */
+.solar-legend {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #cfd8dc;
+}
+
+.legend-icon {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+}
+
+.sun-icon { background: radial-gradient(circle, #ffd700, #ffa726); }
+.flower-icon { background: #66bb6a; }
+.cloud-icon { background: white; }
+

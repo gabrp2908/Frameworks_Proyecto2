@@ -13,6 +13,7 @@ import { SandClockComponent } from '../clocks/sand-clock/sand-clock.component';
 import { DigitalClockComponent } from '../clocks/digital-clock/digital-clock.component';
 import { BuildingClockComponent } from '../clocks/building-clock/building-clock.component';
 import { OscilloscopeClockComponent } from '../clocks/oscilloscope-clock/oscilloscope-clock.component';
+import { SolarClockComponent } from '../clocks/solar-clock/solar-clock.component';
 
 interface Visualizer {
   value: string;
@@ -35,6 +36,7 @@ interface Visualizer {
     DigitalClockComponent,
     BuildingClockComponent,
     OscilloscopeClockComponent,
+    SolarClockComponent,
   ],
   templateUrl: './time-visualizer.component.html',
   styleUrls: ['./time-visualizer.component.css']
@@ -93,6 +95,12 @@ export class TimeVisualizerComponent implements OnInit, OnDestroy {
       label: 'Osciloscopio',
       description: 'Un osciloscopio digital que permite la visualización del tiempo con una onda de pulsos cuadrados (horas), una onda triangular (minutos) y una onda sinusoidal (segundos)',
       component: OscilloscopeClockComponent
+    },
+    {
+      value: 'solar',
+      label: 'Reloj Solar',
+      description: 'Un paisaje donde el Sol se posiciona según la hora, las Flores florecen cada dos minutos y las Nubes aparecen en el cielo cen intervalos de 10 segundos',
+      component: SolarClockComponent
     },
   ];
 

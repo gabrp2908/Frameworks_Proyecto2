@@ -1,0 +1,92 @@
+<div class="solar-clock">
+  <div class="solar-scene" [style.background]="getSkyGradient()">
+    
+    <!-- Estrellas -->
+    <div 
+      *ngFor="let star of getStars(); let i = index"
+      class="star"
+      [style.left]="getStarPosition(i).left"
+      [style.top]="getStarPosition(i).top">
+    </div>
+
+    <!-- Nubes - Comportamiento exacto por rangos -->
+    <div 
+      *ngFor="let cloud of getClouds(); let i = index"
+      class="cloud"
+      [class]="'cloud-' + getCloudSize(i)"
+      [style.left]="getCloudPosition(i).left"
+      [style.top]="getCloudPosition(i).top">
+      <div class="cloud-part"></div>
+      <div class="cloud-part"></div>
+      <div class="cloud-part"></div>
+    </div>
+
+    <!-- Sol -->
+    <div class="sun-orbit">
+      <div 
+        class="sun"
+        [style.transform]="getSunPosition().transform"
+        [style.opacity]="getSunPosition().opacity">
+        <div class="sun-glow"></div>
+      </div>
+    </div>
+
+    <!-- Montañas -->
+    <div class="mountains">
+      <div class="mountain mountain-1"></div>
+      <div class="mountain mountain-2"></div>
+      <div class="mountain mountain-3"></div>
+    </div>
+
+    <!-- Flores -->
+    <div class="ground">
+      <div 
+        *ngFor="let flower of getFlowers(); let i = index"
+        class="flower"
+        [style.left]="getFlowerPosition(i).left"
+        [style.border-bottom-color]="getFlowerColor(i)">
+        <div class="flower-petal" [style.background]="getFlowerColor(i)"></div>
+        <div class="flower-petal" [style.background]="getFlowerColor(i)"></div>
+        <div class="flower-petal" [style.background]="getFlowerColor(i)"></div>
+        <div class="flower-petal" [style.background]="getFlowerColor(i)"></div>
+      </div>
+    </div>
+
+    <div class="horizon"></div>
+  </div>
+
+  <!-- Información y leyenda -->
+  <div class="solar-info">
+    <div class="info-panel">
+      <div class="info-item">
+        <div class="info-label">Horas (Sol)</div>
+        <div class="info-value">{{ getSafeHours() }}/24</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">Flores (Minutos)</div>
+        <div class="info-value">{{ getFlowerCount() }}/30</div>
+        <div class="info-subtext">{{ getSafeMinutes() }} min</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">Nubes (Segundos)</div>
+        <div class="info-value">{{ getCloudCount() }}/5</div>
+        <div class="info-subtext">{{ getSafeSeconds() }} seg</div>
+      </div>
+    </div>
+
+    <div class="solar-legend">
+      <div class="legend-item">
+        <div class="legend-icon sun-icon"></div>
+        <span>Sol - Posición horaria</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-icon flower-icon"></div>
+        <span>Flores - Cada 2 minutos</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-icon cloud-icon"></div>
+        <span>Nubes - Por rangos de 10 segundos</span>
+      </div>
+    </div>
+  </div>
+</div>
