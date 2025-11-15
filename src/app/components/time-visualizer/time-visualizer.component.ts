@@ -14,6 +14,8 @@ import { DigitalClockComponent } from '../clocks/digital-clock/digital-clock.com
 import { BuildingClockComponent } from '../clocks/building-clock/building-clock.component';
 import { OscilloscopeClockComponent } from '../clocks/oscilloscope-clock/oscilloscope-clock.component';
 import { SolarClockComponent } from '../clocks/solar-clock/solar-clock.component';
+import { CubeClockComponent } from '../clocks/cube-clock/cube-clock.component';
+
 
 interface Visualizer {
   value: string;
@@ -37,6 +39,7 @@ interface Visualizer {
     BuildingClockComponent,
     OscilloscopeClockComponent,
     SolarClockComponent,
+    CubeClockComponent
   ],
   templateUrl: './time-visualizer.component.html',
   styleUrls: ['./time-visualizer.component.css']
@@ -101,6 +104,12 @@ export class TimeVisualizerComponent implements OnInit, OnDestroy {
       label: 'Reloj Solar',
       description: 'Un paisaje donde el Sol se posiciona según la hora, las Flores florecen cada dos minutos y las Nubes aparecen en el cielo cen intervalos de 10 segundos',
       component: SolarClockComponent
+    },
+    {
+      value: 'cube',
+      label: 'Reloj 3D',
+      description: 'Tres cubos que giran y que en sus caras muestran las horas, minutos y segundos mediante un efecto 3D',
+      component: CubeClockComponent
     },
   ];
 

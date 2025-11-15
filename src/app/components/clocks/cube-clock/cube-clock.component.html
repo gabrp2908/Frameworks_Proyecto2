@@ -1,0 +1,34 @@
+<div class="cube-clock-container">
+  <div class="cubes">
+
+    <!-- Cubo de horas -->
+    <div class="cube hour-cube" [style.transform]="'rotateY(' + rotationHours + 'deg)'">
+      <div class="face front">{{ getHourFaceValue(0) }}</div>
+      <div class="face right">{{ getHourFaceValue(1) }}</div>
+      <div class="face back">{{ getHourFaceValue(2) }}</div>
+      <div class="face left">{{ getHourFaceValue(3) }}</div>
+      <div class="face top">H</div>
+      <div class="face bottom"></div>
+    </div>
+
+    <!-- Cubo de minutos -->
+    <div class="cube minute-cube" [style.transform]="'rotateY(' + rotationMinutes + 'deg)'">
+      <div class="face front">{{ getMinuteFaceValue(0) }}</div>
+      <div class="face right">{{ getMinuteFaceValue(1) }}</div>
+      <div class="face back">{{ getMinuteFaceValue(2) }}</div>
+      <div class="face left">{{ getMinuteFaceValue(3) }}</div>
+      <div class="face top">M</div>
+      <div class="face bottom"></div>
+    </div>
+
+    <!-- Cubo de segundos -->
+    <div class="cube second-cube" [style.transform]="'rotateY(' + rotationSeconds + 'deg)'">
+      <div class="face front">{{ getSecondFaceValue(0) }}</div>
+      <div class="face right">{{ getSecondFaceValue(1) }}</div>
+      <div class="face back">{{ getSecondFaceValue(2) }}</div>
+      <div class="face left">{{ getSecondFaceValue(3) }}</div>
+      <div class="face top">S</div>
+      <div class="face bottom"></div>
+    </div>
+
+  </div>

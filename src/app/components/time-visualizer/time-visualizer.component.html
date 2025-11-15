@@ -20,13 +20,13 @@
       <input 
         type="range" 
         id="time-slider" 
-        min="-43200" 
+        min="-7200" 
         max="7200" 
         [(ngModel)]="timeOffset"
         (input)="onTimeOffsetChange($event)"
         class="time-slider">
       <div class="slider-labels">
-        <span>-12h</span>
+        <span>-2h</span>
         <span>0</span>
         <span>+2h</span>
       </div>
@@ -85,6 +85,10 @@
         [currentTime]="currentTime">
       </app-solar-clock>
 
+      <app-cube-clock 
+        *ngSwitchCase="'cube'"
+        [currentTime]="currentTime">
+      </app-cube-clock>
 
     </ng-container>
   </div>
