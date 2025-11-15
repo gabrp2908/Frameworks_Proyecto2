@@ -134,11 +134,9 @@ export class TimeVisualizerComponent implements OnInit, OnDestroy {
     this.timeService.setTimeOffset(this.timeOffset);
   }
 
-  // Cambio de rango de horas
   toggleTimeRange(): void {
     this.timeRange = this.timeRange === '2h' ? '12h' : '2h';
     
-    // Si el offset actual excede el nuevo rango, ajustarlo
     const maxOffset = this.getMaxOffset();
     if (Math.abs(this.timeOffset) > maxOffset) {
       this.timeOffset = this.timeOffset > 0 ? maxOffset : -maxOffset;

@@ -172,7 +172,6 @@
   font-weight: 600;
 }
 
-/* Efectos de hover para mejor interactividad */
 .cube:hover {
   transform: scale(1.05) rotateY(var(--rotation, 0deg));
 }

@@ -90,8 +90,7 @@ export class BuildingClockComponent {
     
     return `Hora ${hour}:${minute.toString().padStart(2, '0')} - ${floorLabel} con ${litWindows} ventanas iluminadas`;
   }
-
-  // Obtener clase CSS para la animación de parpadeo
+  
   getEntranceLightClass(): string {
     return this.isEntranceLightOn() ? 'entrance-light-on' : 'entrance-light-off';
   }

@@ -3,14 +3,14 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center; /* center content horizontally */
-  justify-content: center; /* center content vertically inside available height */
+  align-items: center;
+  justify-content: center;
   background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
   border-radius: 20px;
   color: #00ff00;
   font-family: 'Courier New', monospace;
   border: 3px solid #444;
-  margin: 0 auto; /* center the component horizontally within its parent */
+  margin: 0 auto;
   max-width: 1200px;
 }
 
@@ -219,7 +219,6 @@
   box-shadow: 0 0 5px currentColor;
 }
 
-/* Efectos de brillo para las ondas */
 .hours-wave {
   filter: drop-shadow(0 0 2px #ff4444) drop-shadow(0 0 4px rgba(255, 68, 68, 0.3));
 }
@@ -232,7 +231,6 @@
   filter: drop-shadow(0 0 2px #ffff44) drop-shadow(0 0 4px rgba(255, 255, 68, 0.3));
 }
 
-/* Efecto de escaneo CRT */
 .oscilloscope-screen::before {
   content: '';
   position: absolute;
