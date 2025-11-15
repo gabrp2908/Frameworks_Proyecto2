@@ -1,59 +1,52 @@
-# AngularProject
+# **PROYECTO 2 (ANGULAR): VISUALIZADORES DE TIEMPO**
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.9.
+**Realizado por:**  Gabriela Rey (V-29645414)
 
-## Development server
+**Materia:**  Manejo de Frameworks - 2025C
 
-To start a local development server, run:
+# Objetivo General
 
-```bash
-ng serve
-```
+Desarrollo de una aplicación de visualización del tiempo con 10 diferentes tipos de relojes interactivos e intuitivos. Cada visualización muestra horas, minutos y segundos de una manera única y original, sin limitarse a la forma clásica de un reloj.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-## Code scaffolding
+## Características Principales
+- Sistema de autenticación que permite el registro e inicio de sesión por diferentes usuarios mediante el almacenamiento local en el navegador.
+- Servicio de tiempo que permite la actualización en tiempo real de horas, minutos y segundos, así como el manejo eficiente de fechas y zonas horarias.
+- 10 formas diferentes de visualizar el tiempo las cuales pueden ser seleccionadas de manera independiente.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
 
-```bash
-ng generate component component-name
-```
+## Visualizaciones de Tiempo Desarrolladas
+1. **Reloj Analógico**  
+   Clásico reloj con manecillas que se actualizan cada segundo.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+2. **Reloj Binario**  
+   Representación del tiempo en formato binario.
 
-```bash
-ng generate --help
-```
+3. **Reloj de Barras**  
+   Barras que crecen dinámicamente según horas, minutos y segundos.
 
-## Building
+4. **Reloj Planetario**  
+   Planetas orbitando que representan el paso del tiempo.
 
-To build the project run:
+5. **Reloj de Arena**  
+   Simulación de un reloj de arena con rellenos para horas, minutos y segundos.
 
-```bash
-ng build
-```
+6. **Reloj Digital (7 segmentos)**  
+   Visualización digital con estilo de display clásico.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+7. **Edificio con Ventanas Iluminadas**  
+   - 24 pisos = horas del día.  
+   - 60 ventanas por piso = minutos iluminándose progresivamente.
 
-## Running unit tests
+8. **Osciloscopio**  
+   - Onda cuadrada = horas.  
+   - Onda triangular = minutos.  
+   - Onda sinusoidal = segundos.
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+9. **Reloj Solar**  
+   - Sol se posiciona según la hora.  
+   - Flores florecen cada 2 minutos.  
+   - Nubes aparecen cada 10 segundos.
 
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+10. **Reloj 3D**  
+    Tres cubos giratorios que muestran horas, minutos y segundos en sus caras.
