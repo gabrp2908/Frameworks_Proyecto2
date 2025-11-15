@@ -75,15 +75,14 @@ export class SolarClockComponent {
 
   // NUBES: Comportamiento exacto según rangos de segundos
   getCloudCount(): number {
-  const seconds = this.getSafeSeconds();
-  if (seconds < 10) return 0;   // 0-9 seg: 0 nubes
-  if (seconds < 20) return 1;   // 10-19 seg: 1 nube
-  if (seconds < 30) return 2;   // 20-29 seg: 2 nubes
-  if (seconds < 40) return 3;   // 30-39 seg: 3 nubes
-  if (seconds < 50) return 4;   // 40-49 seg: 4 nubes
-  return 5;                     // 50-59 seg: 5 nubes
-}
-
+    const seconds = this.getSafeSeconds();
+    if (seconds < 10) return 0;   // 0-9 seg: 0 nubes
+    if (seconds < 20) return 1;   // 10-19 seg: 1 nube
+    if (seconds < 30) return 2;   // 20-29 seg: 2 nubes
+    if (seconds < 40) return 3;   // 30-39 seg: 3 nubes
+    if (seconds < 50) return 4;   // 40-49 seg: 4 nubes
+    return 5;                     // 50-59 seg: 5 nubes
+  }
 
   getClouds(): number[] {
     return Array.from({ length: this.getCloudCount() }, (_, i) => i);
@@ -140,28 +139,6 @@ export class SolarClockComponent {
   getCloudSize(index: number): string {
     const sizes = ['small', 'medium', 'large', 'medium', 'small'];
     return sizes[index % sizes.length];
-  }
-
-  getTimeDescription(): string {
-    const hour = this.getSafeHours();
-    if (hour < 5) return 'Noche';
-    if (hour < 7) return 'Amanecer';
-    if (hour < 12) return 'Mañana';
-    if (hour < 17) return 'Mediodía';
-    if (hour < 19) return 'Atardecer';
-    if (hour < 22) return 'Anochecer';
-    return 'Noche Estrellada';
-  }
-
-  getDetailedStatus(): string {
-    const flowers = this.getFlowerCount();
-    const clouds = this.getCloudCount();
-    const currentMinute = this.getSafeMinutes();
-    const currentSecond = this.getSafeSeconds();
-    const rangeStart = Math.floor(currentSecond / 10) * 10;
-    const rangeEnd = rangeStart + 9;
-    
-    return `${flowers} flor${flowers !== 1 ? 'es' : ''} (${currentMinute} min) • ${clouds} nube${clouds !== 1 ? 's' : ''} (${rangeStart}-${rangeEnd} seg)`;
   }
 
   getStarIntensity(): number {

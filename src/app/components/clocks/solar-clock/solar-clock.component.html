@@ -55,11 +55,11 @@
     <div class="horizon"></div>
   </div>
 
-  <!-- Información y leyenda -->
+  <!-- Leyenda -->
   <div class="solar-info">
     <div class="info-panel">
       <div class="info-item">
-        <div class="info-label">Horas (Sol)</div>
+        <div class="info-label">Sol (Horas)</div>
         <div class="info-value">{{ getSafeHours() }}/24</div>
       </div>
       <div class="info-item">
@@ -71,21 +71,6 @@
         <div class="info-label">Nubes (Segundos)</div>
         <div class="info-value">{{ getCloudCount() }}/5</div>
         <div class="info-subtext">{{ getSafeSeconds() }} seg</div>
-      </div>
-    </div>
-
-    <div class="solar-legend">
-      <div class="legend-item">
-        <div class="legend-icon sun-icon"></div>
-        <span>Sol - Posición horaria</span>
-      </div>
-      <div class="legend-item">
-        <div class="legend-icon flower-icon"></div>
-        <span>Flores - Cada 2 minutos</span>
-      </div>
-      <div class="legend-item">
-        <div class="legend-icon cloud-icon"></div>
-        <span>Nubes - Por rangos de 10 segundos</span>
       </div>
     </div>
   </div>

@@ -9,42 +9,6 @@
   font-family: 'Arial', sans-serif;
 }
 
-.solar-header {
-  text-align: center;
-  margin-bottom: 1.5rem;
-}
-
-.solar-header h3 {
-  margin: 0 0 0.5rem 0;
-  font-size: 2rem;
-  font-weight: 600;
-  color: #ffd700;
-}
-
-.time-display {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin: 0.5rem 0;
-  font-family: 'Courier New', monospace;
-  color: #ffa726;
-}
-
-.time-description {
-  margin: 0;
-  color: #b3e5fc;
-  font-size: 1.1rem;
-}
-
-.detailed-status {
-  margin: 0.5rem 0 0 0;
-  color: #ffd700;
-  font-size: 1rem;
-  background: rgba(0, 0, 0, 0.3);
-  padding: 0.5rem 1rem;
-  border-radius: 10px;
-  display: inline-block;
-}
-
 .solar-scene {
   flex: 1;
   position: relative;
@@ -220,7 +184,6 @@
 .info-panel {
   display: flex;
   justify-content: space-around;
-  margin-bottom: 1.5rem;
   background: rgba(255, 255, 255, 0.1);
   padding: 1rem;
   border-radius: 10px;
@@ -249,30 +212,3 @@
   margin-top: 0.2rem;
   opacity: 0.8;
 }
-
-/* Leyenda */
-.solar-legend {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  flex-wrap: wrap;
-}
-
-.legend-item {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.9rem;
-  color: #cfd8dc;
-}
-
-.legend-icon {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-}
-
-.sun-icon { background: radial-gradient(circle, #ffd700, #ffa726); }
-.flower-icon { background: #66bb6a; }
-.cloud-icon { background: white; }
-

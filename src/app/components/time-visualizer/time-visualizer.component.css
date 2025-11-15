@@ -99,6 +99,6 @@
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10px);
   display: grid;
-  grid-template-rows: auto; /* Las filas se adaptan al contenido */
+  grid-template-rows: auto;
   align-content: start;
 }
