@@ -102,3 +102,48 @@
   grid-template-rows: auto;
   align-content: start;
 }
+
+.range-controls-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.range-info {
+  font-size: 0.75rem;
+  color: #666;
+  background: rgba(102, 126, 234, 0.1);
+  padding: 0.25rem 0.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.slider-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.range-toggle-btn {
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, var(--blue), var(--purple));
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  align-self: flex-end;
+  margin-top: 0.25rem;
+}
+
+.range-toggle-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.range-toggle-btn:active {
+  transform: translateY(0);
+}

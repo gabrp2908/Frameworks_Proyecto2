@@ -16,19 +16,32 @@
     </div>
 
     <div class="control-group">
-      <label for="time-slider">Ajuste de Tiempo: {{ timeOffset }} segundos</label>
+      <div class="range-controls-header">
+        <label for="time-slider">Ajuste de Tiempo: {{ getFormattedOffset() }}</label>
+        <div class="range-info">Rango: {{ getRangeDisplay() }}</div>
+      </div>
+      
       <input 
         type="range" 
         id="time-slider" 
-        min="-7200" 
-        max="7200" 
+        [min]="-getMaxOffset()" 
+        [max]="getMaxOffset()" 
         [(ngModel)]="timeOffset"
         (input)="onTimeOffsetChange($event)"
         class="time-slider">
-      <div class="slider-labels">
-        <span>-2h</span>
-        <span>0</span>
-        <span>+2h</span>
+      
+      <div class="slider-controls">
+        <div class="slider-labels">
+          <span>{{ getSliderLabels().min }}</span>
+          <span>0</span>
+          <span>{{ getSliderLabels().max }}</span>
+        </div>
+        <button 
+          type="button" 
+          (click)="toggleTimeRange()"
+          class="range-toggle-btn">
+          {{ getRangeButtonLabel() }}
+        </button>
       </div>
     </div>
 

@@ -16,7 +16,6 @@ import { OscilloscopeClockComponent } from '../clocks/oscilloscope-clock/oscillo
 import { SolarClockComponent } from '../clocks/solar-clock/solar-clock.component';
 import { CubeClockComponent } from '../clocks/cube-clock/cube-clock.component';
 
-
 interface Visualizer {
   value: string;
   label: string;
@@ -47,15 +46,16 @@ interface Visualizer {
 export class TimeVisualizerComponent implements OnInit, OnDestroy {
   currentTime: TimeState;
   timeOffset: number = 0;
-  selectedVisualizer: string = 'binary';
+  selectedVisualizer: string = 'analog';
+  timeRange: '2h' | '12h' = '2h';
   private timeSubscription: Subscription | undefined;
 
   visualizers: Visualizer[] = [
     {
-    value: 'analog',
-    label: 'Reloj Analógico',
-    description: 'Un reloj analógico clásico con manecillas que se actualizan cada segundo',
-    component: AnalogClockComponent
+      value: 'analog',
+      label: 'Reloj Analógico',
+      description: 'Un reloj analógico clásico con manecillas que se actualizan cada segundo',
+      component: AnalogClockComponent
     },
     { 
       value: 'binary', 
@@ -134,6 +134,38 @@ export class TimeVisualizerComponent implements OnInit, OnDestroy {
     this.timeService.setTimeOffset(this.timeOffset);
   }
 
+  // Cambio de rango de horas
+  toggleTimeRange(): void {
+    this.timeRange = this.timeRange === '2h' ? '12h' : '2h';
+    
+    // Si el offset actual excede el nuevo rango, ajustarlo
+    const maxOffset = this.getMaxOffset();
+    if (Math.abs(this.timeOffset) > maxOffset) {
+      this.timeOffset = this.timeOffset > 0 ? maxOffset : -maxOffset;
+      this.timeService.setTimeOffset(this.timeOffset);
+    }
+  }
+
+  getMaxOffset(): number {
+    return this.timeRange === '2h' ? 7200 : 43200;
+  }
+
+  getRangeButtonLabel(): string {
+    return this.timeRange === '2h' ? 'Cambiar a ±12h' : 'Cambiar a ±2h';
+  }
+
+  getRangeDisplay(): string {
+    return this.timeRange === '2h' ? '±2 horas' : '±12 horas';
+  }
+
+  getSliderLabels(): { min: string, max: string } {
+    if (this.timeRange === '2h') {
+      return { min: '-2h', max: '+2h' };
+    } else {
+      return { min: '-12h', max: '+12h' };
+    }
+  }
+
   getVisualizerName(value: string): string {
     const visualizer = this.visualizers.find(viz => viz.value === value);
     return visualizer ? visualizer.label : 'Visualizador';
@@ -155,5 +187,22 @@ export class TimeVisualizerComponent implements OnInit, OnDestroy {
     const minutes = this.currentTime.minutes.toString().padStart(2, '0');
     const seconds = this.currentTime.seconds.toString().padStart(2, '0');
     return `${hours}:${minutes}:${seconds}`;
+  }
+
+  getFormattedOffset(): string {
+    const absOffset = Math.abs(this.timeOffset);
+    const hours = Math.floor(absOffset / 3600);
+    const minutes = Math.floor((absOffset % 3600) / 60);
+    const seconds = absOffset % 60;
+    
+    const sign = this.timeOffset >= 0 ? '+' : '-';
+    
+    if (hours > 0) {
+      return `${sign}${hours}h ${minutes}m ${seconds}s`;
+    } else if (minutes > 0) {
+      return `${sign}${minutes}m ${seconds}s`;
+    } else {
+      return `${sign}${seconds}s`;
+    }
   }
 }
